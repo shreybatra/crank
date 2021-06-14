@@ -6,8 +6,9 @@ This is the cli tool to connect and use [CrankDB](https://github.com/shreybatra/
 - Golang 1.16
 
 ## Runnning
-- Download application - `go get github.com/shreybatra/crank`
-- Run server with command - `crank`
+- Download and start [CrankDB](https://github.com/shreybatra/crankdb).
+- Download crank-cli - `go get github.com/shreybatra/crank`
+- Run cli and connect to CrankDB using - `crank`
 - CrankDB server should be running before you can connect.
 
 ## Query Language
