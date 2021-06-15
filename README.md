@@ -9,6 +9,7 @@ This is the cli tool to connect and use [CrankDB](https://github.com/shreybatra/
 - Download and start [CrankDB](https://github.com/shreybatra/crankdb).
 - Download crank-cli - `go get github.com/shreybatra/crank`
 - Run cli and connect to CrankDB using - `crank`
+- Optionally, you can write your commands in a `.gsb` file and pass it as an argument to crank cli - `crank commands.gsb`. The gsb file will follow the same commands as interactive shell.
 - CrankDB server should be running before you can connect.
 
 ## Query Language
