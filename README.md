@@ -7,7 +7,9 @@ This is the cli tool to connect and use [CrankDB](https://github.com/shreybatra/
 
 ## Runnning
 - Download and start [CrankDB](https://github.com/shreybatra/crankdb).
-- Download crank-cli - `go get github.com/shreybatra/crank`
+- Download crank-cli -
+    - `go get github.com/shreybatra/crank` or
+    - `go install github.com/shreybatra/crank@latest`
 - Run cli and connect to CrankDB using - `crank`
 - Optionally, you can write your commands in a `.gsb` file and pass it as an argument to crank cli - `crank commands.gsb`. The gsb file will follow the same commands as interactive shell.
 - CrankDB server should be running before you can connect.
@@ -19,50 +21,51 @@ This is the cli tool to connect and use [CrankDB](https://github.com/shreybatra/
 ```js
 // Set a string (quotes are mandatory to declare a string)
 > set hello "world" 
-// "hello set"
+// success:true
 
 // Set an integer
 > set age 30 
-// "age set"
+// success:true
 
 // Set a float value
 > set marks 98.5 
-// marks set
+// success:true
 
 // Set a JSON object (Nested objects are allowed)
 > set user_1 {"name" : "shrey", "age": "23" }
-// user_1 set
+// success:true
 
 // Set a JSON array object (Any type of JSON serializable object can be stored)
 > set arr [ 1, "shrey", {"marks": 90}]
-// arr set
+// success:true
 ```
 
 ### GET
 
 ```js
 > get hello
-// "world"
+// dataType:STRING stringVal:"world"
 
 > get marks
-// 98.5
+// dataType:DOUBLE doubleVal:98.5
 
 > get user_1
-// {"name" : "shrey", "age": "23" }
+// dataType:JSON jsonVal:"{\"age\":\"23\",\"name\":\"shrey\"}"
 ```
 
 ### FIND (To run queries on keys storing JSON objects)
 
 ```js
 > find {}
-// returns every JSON storing key
+// returns every JSON (map) storing key
+// [ { user_1 map[age:23 name:shrey ] } ]
 
 > find {"name": "shrey"}
 // finds all keys having a JSON object with name as "shrey"
 ```
 
 ## Steps to build
-- Run command - `go get github.com/shreybatra/crank`
+- Git clone the repository.
 - Tidy dependencies using - `go mod tidy`
 - Build the application - `go build .`
-- Run the server - `./crank`
+- Run the cli application - `./crank`
